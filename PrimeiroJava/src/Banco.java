@@ -1,11 +1,11 @@
 public class Banco {
-    public Conta[] contas;
+    private RepositorioContas contas;
     private int indice;
     private double taxa = 0.01;
 
-    public Banco(){//construtor
+    public Banco(RepositorioContas repositorio){//construtor
 
-        contas = new Conta[10]; //banco tem 10 contas
+        this.contas = repositorio; //banco tem 10 contas
         indice = 0;
     }
 
