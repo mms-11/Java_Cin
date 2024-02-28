@@ -33,7 +33,7 @@ public class Banco {
     public void creditarConta(String n,double valor){
         ContaAbstrata c = repositorio.procurar(n);
         if(c != null){
-         c.creditar(valor);(valor);
+         c.creditar(valor);
          repositorio.atualizar(c);
         }else{
          System.out.println("conta nao encontrada");
