@@ -72,5 +72,8 @@ public class Banco {
             System.out.println("Conta não é uma conta especial.");
         }
     }
+    public ContaAbstrata procurarConta(String numero){
+        return repositorio.procurar(numero);
+    }
 }
 
