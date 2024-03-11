@@ -1,0 +1,22 @@
+
+Para implementar uma locadora de veículos, descartaria o uso de classes concretas pois é possível extrair aplicações em comuns dentre os 3 tipos de veículos
+
+-> eu utilizaria Classe abstrata de nome Veículo. Pois nela, posso implementar atributos e métodos comuns(abstratos ou não) como:
+
+Private int custo;
+Private String cor;
+public abstract int CalculaAluguel(int distancia, int tempo,int custo);
+
+public void setCusto(int valor){
+    this.custo = valor;
+}
+
+public void setCor(String cor){
+    this.cor = cor;
+}
+->Não seria interessante utilizar interfaces, pois é possível compartilhar corpos de funções em comum entre os 3 tipos de veículo(como setCusto e setCor), evitando assim a cópia desnecessária de trechos de código.
+Já que ao implementar interfaces, apenas escrevemos assinaturas (nome do método), não sendo possível implementar diretamente o seu corpo.
+
+
+
+E também, na criação de cada subclasse(moto,bicicleta,carro), posso sobrescrever funções de comportamento específico, como foi o caso do método abstrato (public abstract int CalculaAluguel) com base nas particularidades de cada veículo, como tamanho, preco da gasolina, custo, tempo de rodagem, etc;
