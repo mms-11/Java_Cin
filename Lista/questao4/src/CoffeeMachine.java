@@ -5,14 +5,14 @@ public class CoffeeMachine {
     double m = coffee.getMilkRequired();
     double c = coffee.getCoffeeRequired();
 
-    System.out.print(n);
+    
 
     if(coffee instanceof Espresso){
         Espresso cafe = new Espresso(n, w, m, c);
         cafe.prepare();
     }
     if(coffee instanceof Latte){
-        System.out.print("EH CAFE COM LEITE");
+        
         Latte late = new Latte(n, w, m, c);
         late.prepare();
     }
