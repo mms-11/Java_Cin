@@ -5,11 +5,15 @@ public class PayPal implements FormaDePagamento{
     Scanner myObj = new Scanner(System.in);
     private String login;
     private String senha;
-    private PayPalClient[] clientes; // vetor para clientes
-    private int i = 0; // contador da posicao atual de clientes
+    //private PayPalClient[] clientes; // vetor para clientes
+    private int i = 2; // contador da posicao atual de clientes
     
-    // Constructor
-   
+    
+   PayPalClient[] clientes = new PayPalClient[]{
+    new PayPalClient("pnc", "senha123"),
+    new PayPalClient("plc", "senha1234"),
+    
+   };
 
     public void setLogin(String login){
         this.login = login;
@@ -24,14 +28,14 @@ public class PayPal implements FormaDePagamento{
 
     @Override
     public boolean autenticar() {
-        System.out.print("Digite o login: ");
-        String inputLogin = myObj.nextLine();
+        //System.out.print("Digite o login: ");
+        //String inputLogin = myObj.nextLine();
 
-        System.out.print("Digite a senha: ");
-        String inputSenha = myObj.nextLine();
+        //System.out.print("Digite a senha: ");
+        //String inputSenha = myObj.nextLine();
 
-        clientes[i+1] = new PayPalClient(inputLogin, inputSenha);
-        i = i+1;
+        //clientes[i+1] = new PayPalClient(inputLogin, inputSenha);
+        //i = i+1;
 
 
         // Loop through existing clients to check authentication
@@ -44,11 +48,12 @@ public class PayPal implements FormaDePagamento{
     }
 
     @Override
-    public void processarPagamento(double valor) {
+    public void processarPagamento(double valor) throws Excecao {
         if (!autenticar()) {
-            System.out.println("Pagamento não autorizado");
-        } else {
+            throw new Excecao("Pagamento não autorizado");
+           
+        }  
             System.out.printf("Pagamento com PayPal no valor %.2f processado com sucesso\n", valor);
-        }
+        
     }
 }

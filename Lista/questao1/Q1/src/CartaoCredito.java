@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class CartaoCredito implements FormaDePagamento {
 
     Scanner myObj = new Scanner(System.in);
-    CartaoClient[] cartaoClients;
-    int i = 0;
+    //CartaoClient[] cartaoClients;
+    int i = 2;
 
     private String senha; //atributos privados
     private String codSeguranca;
@@ -19,6 +19,12 @@ public class CartaoCredito implements FormaDePagamento {
         cartaoClients = new CartaoClient[10];
     }
 
+    CartaoClient[] cartaoClients = new CartaoClient[]{
+        new CartaoClient("123", "abc"),
+        new CartaoClient("1234", "abcd"),
+
+    };
+
     //implementar metodos com override
     @Override
     public boolean autenticar(){
@@ -29,13 +35,13 @@ public class CartaoCredito implements FormaDePagamento {
         System.out.print("digite o código de segurança");
         String inputCod = myObj.nextLine();
 
-        cartaoClients[i+1] = new CartaoClient(inputSenha, inputCod);
-        i = i+1;
+        //cartaoClients[i+1] = new CartaoClient(inputSenha, inputCod);
+        //i = i+1;
 
 
         // Loop through existing clients to check authentication
         for (int j = 0; j < i; j++) {
-            if (cartaoClients[j].getSenha().equals(this.senha) && cartaoClients[j].getCodSeguranca().equals(this.codSeguranca)) {
+            if (cartaoClients[j].getSenha().equals(inputSenha) && cartaoClients[j].getCodSeguranca().equals(inputCod)) {
                 return true;
             }
         }
@@ -46,11 +52,12 @@ public class CartaoCredito implements FormaDePagamento {
     
 
     @Override
-    public void processarPagamento(double valor){
-        if (! this.autenticar()){
-             System.out.print("Pagamento não autorizado");
-        }else{
-            System.out.printf("Pagamento com cartão de crédito no valor ", valor, " processado com sucesso");
-        }
+    public void processarPagamento(double valor) throws Excecao {
+        if (!autenticar()) {
+            throw new Excecao("Pagamento não autorizado");
+           
+        }  
+            System.out.printf("Pagamento com PayPal no valor %.2f processado com sucesso\n", valor);
+        
     }
 }

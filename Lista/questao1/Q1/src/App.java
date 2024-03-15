@@ -1,17 +1,18 @@
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args)  {
+
         Scanner myObj = new Scanner(System.in);
 
         PayPal pay = new PayPal();
-        pay.setClients();
+        //pay.setClients();
 
         BoletoBancario boleto = new BoletoBancario();
-        boleto.setClients();
+        //boleto.setClients();
 
         CartaoCredito cartao = new CartaoCredito();
-        cartao.setClients();
+        //cartao.setClients();
 
 
         System.out.println("Digite (1): Cartão de Crédito \n");
@@ -34,7 +35,13 @@ public class App {
 
          cartao.setCodSeguranca(inputCod);
          cartao.setSenha(inputSenha);
-         cartao.processarPagamento(n);
+         try {
+            cartao.processarPagamento(n);
+         } catch (Excecao e) {
+           
+            e.msg();
+         }
+         
 
 
         }else if(inputOperacao.equals("2")){
@@ -47,7 +54,14 @@ public class App {
             Double n = Double.parseDouble(valor);
 
             boleto.setCodigo(inputCod);
-            boleto.processarPagamento(n);
+            
+            try {
+                cartao.processarPagamento(n);
+             } catch (Excecao e) {
+               
+                e.msg();
+             }
+             
 
 
 
@@ -67,7 +81,13 @@ public class App {
 
          pay.setLogin(inputLogin);
          pay.setSenha(inputSenha);
-         pay.processarPagamento(n);
+         try {
+            cartao.processarPagamento(n);
+         } catch (Excecao e) {
+           
+            e.msg();
+         }
+         
 
         }
 
