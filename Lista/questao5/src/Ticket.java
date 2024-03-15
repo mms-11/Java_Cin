@@ -1,3 +1,3 @@
-public class Ticket implements TicketAdulto, TicketCrianca{
-    
+ enum Ticket {
+  ADULTO, CRIANCA  
 }
