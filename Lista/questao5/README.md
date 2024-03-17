@@ -6,7 +6,8 @@ Welcome to the VS Code Java world. Here is a guideline to help you get started t
 
 The workspace contains two folders by default, where:
 
-- `src`: the folder to maintain sources
+- `src`: the folder to maintain sources![Captura de tela 2024-03-15 144431](https://github.com/mms-11/Java_Cin/assets/140762703/6d78d6f7-5c4b-49af-b082-42946fc55fa0)
+
 - `lib`: the folder to maintain dependencies
 
 Meanwhile, the compiled output files will be generated in the `bin` folder by default.
